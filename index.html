@@ -58,6 +58,9 @@
     <!-- Fuentes elegantes: Inter y Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -127,7 +130,7 @@
     </a>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-coral text-white transition-all duration-300 shadow-md">
+    <nav id="navbar" class="fixed w-full z-50 bg-transparent text-white transition-all duration-500 py-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <div class="flex-shrink-0 flex items-center gap-3">
@@ -180,8 +183,8 @@
     </header>
 
     <!-- Our Story / Info -->
-    <section id="informacion" class="py-32 bg-cream text-center px-4 border-b border-gray-300">
-        <div class="max-w-4xl mx-auto">
+    <section id="informacion" class="py-32 bg-cream text-center px-4 border-b border-gray-300 overflow-hidden">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
             <span class="text-coral uppercase tracking-[0.2em] text-xs font-bold mb-6 block">Nuestra Esencia</span>
             <h2 class="text-4xl md:text-5xl font-serif mb-10 text-black leading-tight">Una experiencia culinaria auténtica con más de 13 años de fuego y leña.</h2>
             <p class="text-lg md:text-xl font-light text-gray-700 leading-relaxed max-w-2xl mx-auto mb-20">
@@ -214,7 +217,7 @@
             </div>
 
             <!-- Especialidad -->
-            <div class="flex flex-col lg:flex-row gap-0 lg:gap-16 mb-32 items-center bg-cream shadow-xl rounded-sm overflow-hidden">
+            <div class="flex flex-col lg:flex-row gap-0 lg:gap-16 mb-32 items-center bg-cream shadow-xl rounded-sm overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
                 <div class="w-full lg:w-1/2 aspect-[4/3] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80');">
                 </div>
                 <div class="w-full lg:w-1/2 p-10 md:p-16 text-center lg:text-left">
@@ -232,7 +235,7 @@
             <!-- Grid Platos -->
             <div class="grid md:grid-cols-3 gap-16 mt-16">
                 <!-- Plato 1 -->
-                <div class="text-center group">
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                     <div class="aspect-square bg-cover bg-center mb-8 overflow-hidden rounded-sm" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80');">
                         <div class="w-full h-full bg-black/0 group-hover:bg-coral/20 transition-colors duration-500"></div>
                     </div>
@@ -241,7 +244,7 @@
                     <span class="font-bold text-coral tracking-[0.1em] text-lg">$85.000</span>
                 </div>
                 <!-- Plato 2 -->
-                <div class="text-center group">
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                     <div class="aspect-square bg-cover bg-center mb-8 overflow-hidden rounded-sm" style="background-image: url('https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=800&q=80');">
                         <div class="w-full h-full bg-black/0 group-hover:bg-coral/20 transition-colors duration-500"></div>
                     </div>
@@ -250,7 +253,7 @@
                     <span class="font-bold text-coral tracking-[0.1em] text-lg">Desde $12.000</span>
                 </div>
                 <!-- Plato 3 -->
-                <div class="text-center group">
+                <div class="text-center group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                     <div class="aspect-square bg-cover bg-center mb-8 overflow-hidden rounded-sm" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80');">
                         <div class="w-full h-full bg-black/0 group-hover:bg-coral/20 transition-colors duration-500"></div>
                     </div>
@@ -263,8 +266,8 @@
     </section>
 
     <!-- Reviews Section -->
-    <section id="resenas" class="py-32 bg-coral text-white text-center px-4">
-        <div class="max-w-4xl mx-auto">
+    <section id="resenas" class="py-32 bg-coral text-white text-center px-4 overflow-hidden">
+        <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
             <i class="fa-solid fa-quote-left text-5xl mb-10 opacity-40"></i>
             <h2 class="text-3xl md:text-5xl font-serif mb-12 italic leading-relaxed text-white drop-shadow-sm">
                 "Excelente lugar para almorzar carne a la llanera. Buen sabor, porciones abundantes y precios muy justos. Totalmente recomendado al visitar Tunja."
@@ -295,7 +298,23 @@
             </div>
         </div>
         
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
+            // Inicializar AOS
+            AOS.init({ once: true, offset: 50 });
+            
+            // Navegación Transparente On Scroll
+            const nav = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.remove('bg-transparent', 'py-2');
+                    nav.classList.add('bg-coral', 'shadow-md');
+                } else {
+                    nav.classList.add('bg-transparent', 'py-2');
+                    nav.classList.remove('bg-coral', 'shadow-md');
+                }
+            });
+
             // Actualizar el año del copyright automáticamente
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
