@@ -104,14 +104,15 @@
 <body class="bg-orange-50 text-gray-800 font-sans antialiased selection:bg-orange-500 selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm border-b border-orange-100">
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-orange-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <i class="fa-solid fa-fire-burner text-orange-600 text-3xl"></i>
-                    <span class="font-serif font-semibold text-2xl text-orange-950">El Portal Llanero</span>
+                <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
+                    <i class="fa-solid fa-fire-burner text-orange-600 text-2xl sm:text-3xl"></i>
+                    <span class="font-serif font-semibold text-xl sm:text-2xl text-orange-950">El Portal Llanero</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
                     <a href="#menu" class="text-gray-700 hover:text-orange-600 font-medium transition">Menú</a>
                     <a href="#informacion" class="text-gray-700 hover:text-orange-600 font-medium transition">Ubicación y Horarios</a>
                     <a href="#resenas" class="text-gray-700 hover:text-orange-600 font-medium transition">Reseñas</a>
@@ -122,6 +123,23 @@
                         <i class="fab fa-whatsapp text-xl"></i> Pedir ahora
                     </a>
                 </div>
+                <!-- Mobile button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-orange-950 hover:text-orange-600 focus:outline-none p-2" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-orange-100 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#menu" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-orange-600 hover:bg-orange-50">Menú</a>
+                <a href="#informacion" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-orange-600 hover:bg-orange-50">Ubicación y Horarios</a>
+                <a href="#resenas" class="mobile-link block px-3 py-3 rounded-md text-base font-medium text-gray-800 hover:text-orange-600 hover:bg-orange-50">Reseñas</a>
+                <a href="https://wa.me/573107257692?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="mobile-link mt-4 block text-center bg-orange-600 text-white px-5 py-3 rounded-xl font-bold hover:bg-orange-700">
+                    <i class="fab fa-whatsapp mr-2"></i> Pedir ahora
+                </a>
             </div>
         </div>
     </nav>
@@ -162,7 +180,7 @@
     <!-- Info Section -->
     <section id="informacion" class="py-20 bg-orange-50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-8 -mt-32 relative z-20">
+            <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 -mt-16 lg:-mt-32 relative z-20">
                 <!-- Horarios -->
                 <div class="glass-card p-8 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] hover-lift">
                     <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-6 text-orange-600 text-3xl shadow-inner border border-white">
@@ -471,6 +489,24 @@
         
         <script>
             document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Lógica para el Menú Móvil
+            const btnMenu = document.getElementById('mobile-menu-btn');
+            const menuMovil = document.getElementById('mobile-menu');
+            
+            if(btnMenu && menuMovil) {
+                btnMenu.addEventListener('click', () => {
+                    menuMovil.classList.toggle('hidden');
+                });
+                
+                // Ocultar menú al hacer click en un enlace
+                const links = document.querySelectorAll('.mobile-link');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuMovil.classList.add('hidden');
+                    });
+                });
+            }
         </script>
     </footer>
 
