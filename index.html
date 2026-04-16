@@ -122,14 +122,20 @@
 
         .dark-link { color: #000; }
 
-        /* Estilo para el logo dinámico */
+        /* Estilo para el logo dinámico y silueta limpia */
         #logo-img {
-            transition: filter 0.5s ease;
+            transition: all 0.5s ease;
             mix-blend-mode: multiply;
+            filter: contrast(1.1) brightness(1.1); /* Asegura que el blanco sea puro */
         }
         .logo-on-dark {
-            filter: invert(1) brightness(2);
+            filter: invert(1) contrast(2) brightness(1.5) !important;
             mix-blend-mode: screen !important;
+        }
+        
+        .footer-logo {
+            filter: invert(1) contrast(2) brightness(1.5);
+            mix-blend-mode: screen;
         }
     </style>
 </head>
@@ -147,7 +153,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <img src="logo.png" id="logo-img" alt="Logo El Portal Llanero" class="h-12 w-12 sm:h-20 sm:w-20 object-contain logo-on-dark transition-all duration-500">
+                    <img src="logo.png" id="logo-img" alt="Logo El Portal Llanero" class="h-14 w-14 sm:h-20 sm:w-20 object-contain logo-on-dark">
                     <span class="font-serif font-bold text-[10px] sm:text-2xl tracking-[0.4em] uppercase block leading-tight">El Portal<br class="sm:hidden"> Llanero</span>
                 </div>
                 <!-- Desktop Menu -->
@@ -298,7 +304,8 @@
     <footer class="bg-[#1C1A19] text-white py-24 text-center">
         <div class="max-w-7xl mx-auto px-4">
             <div class="mb-10 flex justify-center">
-                <img src="logo.png" alt="Logo El Portal Llanero" class="h-24 w-24 object-contain brightness-0 invert opacity-80" style="mix-blend-mode: screen;">
+                <!-- Logo como silueta blanca pura sin fondos ni cuadros -->
+                <img src="logo.png" alt="Logo El Portal Llanero" class="h-24 w-24 object-contain footer-logo opacity-90">
             </div>
             <span class="font-serif font-bold text-3xl md:text-4xl tracking-[0.3em] mb-10 block uppercase text-[#EFEDE8]">El Portal Llanero</span>
             <div class="flex justify-center gap-8 mb-16">
